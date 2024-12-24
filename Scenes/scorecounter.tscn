@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu016krw1h3pk"]
+
+[ext_resource type="Script" path="res://Scenes/scorecounter.gd" id="1_ermaq"]
+[ext_resource type="Texture2D" uid="uid://dqde08jebyd3e" path="res://Mini Pixel Pack 3/UI objects/Number_font (8 x 8).png" id="1_n5mh4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cimxk"]
+atlas = ExtResource("1_n5mh4")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0mvl"]
+atlas = ExtResource("1_n5mh4")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5hyf"]
+atlas = ExtResource("1_n5mh4")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbmc1"]
+atlas = ExtResource("1_n5mh4")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a23cd"]
+atlas = ExtResource("1_n5mh4")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fav6n"]
+atlas = ExtResource("1_n5mh4")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3omcb"]
+atlas = ExtResource("1_n5mh4")
+region = Rect2(32, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tufq5"]
+atlas = ExtResource("1_n5mh4")
+region = Rect2(32, 8, 8, 8)
+
+[node name="Scorecounter" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+alignment = 2
+script = ExtResource("1_ermaq")
+
+[node name="Digit 0" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cimxk")
+
+[node name="Digit 1" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_y0mvl")
+
+[node name="Digit 2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_o5hyf")
+
+[node name="Digit 3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_pbmc1")
+
+[node name="Digit 4" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_a23cd")
+
+[node name="Digit 5" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_fav6n")
+
+[node name="Digit 6" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3omcb")
+
+[node name="Digit 7" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_tufq5")

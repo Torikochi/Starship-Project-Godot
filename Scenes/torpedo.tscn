@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://kfl4cphm8oqi"]
+
+[ext_resource type="Script" path="res://Scenes/torpedo.gd" id="1_oa2no"]
+[ext_resource type="Texture2D" uid="uid://bwh5whrd73wha" path="res://Foozle Assets/Battlecruiser/Bullet/Kla'ed - Torpedo.png" id="1_rfm6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8kmk"]
+size = Vector2(4, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eugpn"]
+size = Vector2(5, 14)
+
+[sub_resource type="Animation" id="Animation_0bbu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_issxr"]
+resource_name = "default"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1s5cn"]
+_data = {
+"RESET": SubResource("Animation_0bbu1"),
+"default": SubResource("Animation_issxr")
+}
+
+[node name="Torpedo" type="CharacterBody2D" groups=["bullets", "enemies"]]
+script = ExtResource("1_oa2no")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_rfm6u")
+flip_v = true
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(8, 0)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_q8kmk")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemies"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 0)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_eugpn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1s5cn")
+}
+autoplay = "default"
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]

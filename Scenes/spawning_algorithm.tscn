@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctw42eh2d45al"]
+
+[ext_resource type="Script" path="res://Scenes/spawning_algorithm.gd" id="1_ppih5"]
+[ext_resource type="Texture2D" uid="uid://bdhducya5hc3l" path="res://Mini Pixel Pack 3/UI objects/Player_life_icon (16 x 16).png" id="2_xi8bq"]
+
+[node name="Spawning Algorithm" type="Node2D"]
+script = ExtResource("1_ppih5")
+
+[node name="Temporary player" type="Sprite2D" parent="."]
+position = Vector2(120, 200)
+texture = ExtResource("2_xi8bq")

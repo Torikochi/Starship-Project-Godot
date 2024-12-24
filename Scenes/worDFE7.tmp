@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://bl7xiaqp2devd"]
+
+[ext_resource type="Texture2D" uid="uid://l8josm8aixpj" path="res://Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="1_exicj"]
+[ext_resource type="Script" path="res://Scenes/world_1.gd" id="1_loabh"]
+[ext_resource type="PackedScene" uid="uid://d3oeprs16jj70" path="res://Scenes/player.tscn" id="1_q1dt6"]
+[ext_resource type="PackedScene" uid="uid://c4bvchdjahghf" path="res://Scenes/ui.tscn" id="4_w4put"]
+[ext_resource type="Texture2D" uid="uid://bvvvgpm66l6xq" path="res://Mini Pixel Pack 3/UI objects/START (48 x 8).png" id="5_yrt00"]
+[ext_resource type="Texture2D" uid="uid://b38n858ogxbri" path="res://Mini Pixel Pack 3/UI objects/GAME_OVER (72 x 8).png" id="6_cj3kk"]
+[ext_resource type="AudioStream" uid="uid://bf3giajwislmb" path="res://Sounds/BGM/1. Into The Spaceship.wav" id="7_sgvel"]
+[ext_resource type="AudioStream" uid="uid://bielm0uvaf60s" path="res://Sounds/BGM/2. Satellite Interruption.wav" id="8_66auh"]
+[ext_resource type="AudioStream" uid="uid://c2ibiwcgw6lpr" path="res://Sounds/BGM/3. Goodbye Sweet Alien.wav" id="9_n4v4m"]
+
+[sub_resource type="Animation" id="Animation_gnas8"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 64, 240, 320), Rect2(0, 0, 240, 320)]
+}
+
+[sub_resource type="Animation" id="Animation_m85ao"]
+resource_name = "scroll"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 240, 320), Rect2(0, 64, 240, 320)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtc8v"]
+_data = {
+"RESET": SubResource("Animation_gnas8"),
+"scroll": SubResource("Animation_m85ao")
+}
+
+[node name="World 1" type="Node2D"]
+script = ExtResource("1_loabh")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_exicj")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 64, 240, 320)
+
+[node name="Player" parent="." instance=ExtResource("1_q1dt6")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gtc8v")
+}
+autoplay = "RESET"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_w4put")]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_yrt00")
+
+[node name="GameOver" type="TextureButton" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_cj3kk")
+
+[node name="BGM Into The Spaceship" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_sgvel")
+
+[node name="BGM Satellite Interruption" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_66auh")
+
+[node name="BGM Goodbye Sweet Alien" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_n4v4m")
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="shield_changed" from="Player" to="CanvasLayer/UI" method="update_shield"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="finished" from="BGM Into The Spaceship" to="." method="_on_bgm_into_the_spaceship_finished"]
+[connection signal="finished" from="BGM Satellite Interruption" to="." method="_on_bgm_satellite_interruption_finished"]
+[connection signal="finished" from="BGM Goodbye Sweet Alien" to="." method="_on_bgm_goodbye_sweet_alien_finished"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bafdijfnas0p5"
+path="res://.godot/imported/Finish Sound.wav-096b25403380108efb2ca4c692ec7d4a.sample"
+
+[deps]
+
+source_file="res://Sounds/BGM/Finish Sound.wav"
+dest_files=["res://.godot/imported/Finish Sound.wav-096b25403380108efb2ca4c692ec7d4a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2ibiwcgw6lpr"
+path="res://.godot/imported/3. Goodbye Sweet Alien.wav-9cd5c8d5928a2b34ebc6c671bcd82f50.sample"
+
+[deps]
+
+source_file="res://Sounds/BGM/3. Goodbye Sweet Alien.wav"
+dest_files=["res://.godot/imported/3. Goodbye Sweet Alien.wav-9cd5c8d5928a2b34ebc6c671bcd82f50.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

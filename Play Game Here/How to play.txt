@@ -1,0 +1,3 @@
+Use WASD or arrow keys to move.
+Use Space bar to shoot.
+You can either press the Space bar or press the start game button with your mouse to start the game.

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn8cg77q3m6ty"]
+
+[ext_resource type="Texture2D" uid="uid://dp1asiqumtman" path="res://Mini Pixel Pack 3/UI objects/White Outline.png" id="1_0tk10"]
+[ext_resource type="Texture2D" uid="uid://c5ut4sqmkjl0b" path="res://Mini Pixel Pack 3/UI objects/Green Bar.png" id="2_6v8ys"]
+[ext_resource type="Script" path="res://Scenes/health_bar.gd" id="3_ybe28"]
+
+[node name="HealthBar" type="TextureProgressBar"]
+offset_right = 16.0
+offset_bottom = 16.0
+value = 50.0
+texture_over = ExtResource("1_0tk10")
+texture_progress = ExtResource("2_6v8ys")
+script = ExtResource("3_ybe28")

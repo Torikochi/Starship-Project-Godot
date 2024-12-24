@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bntx6og2fap57"
+path="res://.godot/imported/TorpedoShoot.wav-a14b852f34d809009274eb2609070533.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound effects/Weapons/TorpedoShoot.wav"
+dest_files=["res://.godot/imported/TorpedoShoot.wav-a14b852f34d809009274eb2609070533.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
